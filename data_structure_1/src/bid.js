@@ -34,3 +34,12 @@ bid.find_name_by_phone = function (phone) {
     var activity = Activity.find_by_name(localStorage.current_activity);
     return (_(activity.sign_ups).findWhere({phone: phone})).name;
 };
+
+bid.bid_success_user = function (argument){
+    var count_price = _.groupBy(argument,function(obj){
+        return obj.price;
+    });
+    return _.find(count_price,function(price){
+        return price.length==1
+    });
+};
