@@ -41,7 +41,7 @@ describe("Bidding", function() {
 
     afterEach(function(){
         localStorage.clear();
-    })
+    });
 
     it("should bid successfully when it is bidding and user has signed up", function(){
         var phone_no = "13600000000";
@@ -63,19 +63,19 @@ describe("Bidding", function() {
         localStorage.is_bidding = "false";
         notify_sms_received(sms_json);
 
-        var activities = JSON.parse(localStorage.activities);
+        activities = JSON.parse(localStorage.activities);
         expect(activities[1].bids[0].biddings.length).toBe(0);
         // empty string
         localStorage.is_bidding = "";
         notify_sms_received(sms_json);
 
-        var activities = JSON.parse(localStorage.activities);
+        activities = JSON.parse(localStorage.activities);
         expect(activities[1].bids[0].biddings.length).toBe(0);
         // no attribute
         localStorage.removeItem("is_bidding");
         notify_sms_received(sms_json);
 
-        var activities = JSON.parse(localStorage.activities);
+        activities = JSON.parse(localStorage.activities);
         expect(activities[1].bids[0].biddings.length).toBe(0);
     });
 

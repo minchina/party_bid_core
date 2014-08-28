@@ -5,7 +5,7 @@ function activity_sign_up (){
 
 }
 
-activity_sign_up.adduser=function(type,name,phone){
+activity_sign_up.adduser=function(name,phone){
     var update_user = {name:name,phone:phone};
     activity_sign_up.get_current_user(update_user);
 };
