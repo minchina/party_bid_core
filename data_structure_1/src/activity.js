@@ -16,3 +16,7 @@ Activity.get_all_activity =function(){
   return JSON.parse(localStorage.activities) || [];
 };
 
+Activity.get_current_activity=function(){
+    return localStorage.current_activity;
+};
+
