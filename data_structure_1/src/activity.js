@@ -8,6 +8,11 @@ Activity.prototype.create=function(){
     allactivity.push(this);
     localStorage.activities = JSON.stringify(allactivity);
 };
+
+Activity.prototype.is_signing_up = function (phone) {
+    return !!(_(this.sign_ups).findWhere({phone: phone}));
+};
+
 Activity.prototype.active=function(){
     localStorage.current_activity = this.name;
 
@@ -19,4 +24,11 @@ Activity.get_all_activity =function(){
 Activity.get_current_activity=function(){
     return localStorage.current_activity;
 };
+
+Activity.find_by_name = function (activity_name) {
+    var activity = _(Activity.get_all_activity()).findWhere({name: activity_name});
+    return new Activity(activity.name, activity.sign_ups, activity.bids);
+};
+
+
 
