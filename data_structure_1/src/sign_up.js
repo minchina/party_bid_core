@@ -21,4 +21,3 @@ activity_sign_up.save_new_user=function(activities){
 };
 
 
-
