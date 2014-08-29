@@ -36,10 +36,10 @@ describe("SignUp Render", function() {
         localStorage.activity_ids = JSON.stringify(activity_ids);
         localStorage.current_activity = "1";
     });
-//
-//    afterEach(function(){
-//        localStorage.clear();
-//    });
+
+    afterEach(function(){
+        localStorage.clear();
+    });
 
 
     it("should show all signed up users by activity name", function(){
