@@ -53,3 +53,15 @@ bid.get_signup_by_activity_id=function(activity_id){
 
 };
 
+bid.bid_success_user = function (argument){
+    var count_price = _.groupBy(argument,function(obj){
+        return obj.price;
+    });
+    var success_user =  _.find(count_price,function(price){
+        return price.length==1
+    });
+    var users = Activity.get_signup_by_id(localStorage.current_activity);
+    success_user[0].name = _(users).find(function(user){return user.phone==success_user[0].phone}).name;
+    return success_user;
+};
+
