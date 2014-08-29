@@ -36,9 +36,9 @@ describe("Bidding", function() {
         localStorage.is_bidding = "";
     });
 
-//    afterEach(function(){
-//        localStorage.clear();
-//    });
+    afterEach(function(){
+        localStorage.clear();
+    });
 
     it("should bid successfully when it is bidding and user has signed up", function(){
         var phone_no = "13600000000";
@@ -53,52 +53,52 @@ describe("Bidding", function() {
         expect(activities["1"].biddings["竞价1"][0].price).toBe("12");
     });
 
-//    it("should bid failed when it is not on bidding", function(){
-//        var phone_no = "13600000000";
-//        var sms_json = build_sms_json("JJ12", phone_no);
-//        // false
-//        localStorage.is_bidding = "false";
-//        notify_sms_received(sms_json);
-//
-//        var activities = JSON.parse(localStorage.activities);
-//        expect(activities["1"].biddings["竞价1"].length).toBe(0);
-//        // empty string
-//        localStorage.is_bidding = "";
-//        notify_sms_received(sms_json);
-//
-//        var activities = JSON.parse(localStorage.activities);
-//        expect(activities["1"].biddings["竞价1"].length).toBe(0);
-//        // no attribute
-//        localStorage.removeItem("is_bidding");
-//        notify_sms_received(sms_json);
-//
-//        var activities = JSON.parse(localStorage.activities);
-//        expect(activities["1"].biddings["竞价1"].length).toBe(0);
-//    });
-//
-//    it("should bid failed when user didn't sign up", function(){
-//        var phone_no = "13600000001";
-//        var sms_json = build_sms_json("JJ12", phone_no);
-//        localStorage.is_bidding = "true";
-//        notify_sms_received(sms_json);
-//
-//        var activities = JSON.parse(localStorage.activities);
-//        expect(activities["1"].biddings["竞价1"].length).toBe(0);
-//    });
-//
-//    it("should accept bid once", function(){
-//        var phone_no = "13600000000";
-//        var sms_json = build_sms_json("JJ12", phone_no);
-//        localStorage.is_bidding = "true";
-//        notify_sms_received(sms_json);
-//        notify_sms_received(sms_json);
-//
-//        var activities = JSON.parse(localStorage.activities);
-//        expect(activities["1"].biddings["竞价1"].length).toBe(1);
-//
-//        expect(activities["1"].biddings["竞价1"][0].phone).toBe(phone_no);
-//        expect(activities["1"].biddings["竞价1"][0].price).toBe("12");
-//    });
+    it("should bid failed when it is not on bidding", function(){
+        var phone_no = "13600000000";
+        var sms_json = build_sms_json("JJ12", phone_no);
+        // false
+        localStorage.is_bidding = "false";
+        notify_sms_received(sms_json);
+
+        var activities = JSON.parse(localStorage.activities);
+        expect(activities["1"].biddings["竞价1"].length).toBe(0);
+        // empty string
+        localStorage.is_bidding = "";
+        notify_sms_received(sms_json);
+
+        var activities = JSON.parse(localStorage.activities);
+        expect(activities["1"].biddings["竞价1"].length).toBe(0);
+        // no attribute
+        localStorage.removeItem("is_bidding");
+        notify_sms_received(sms_json);
+
+        var activities = JSON.parse(localStorage.activities);
+        expect(activities["1"].biddings["竞价1"].length).toBe(0);
+    });
+
+    it("should bid failed when user didn't sign up", function(){
+        var phone_no = "13600000001";
+        var sms_json = build_sms_json("JJ12", phone_no);
+        localStorage.is_bidding = "true";
+        notify_sms_received(sms_json);
+
+        var activities = JSON.parse(localStorage.activities);
+        expect(activities["1"].biddings["竞价1"].length).toBe(0);
+    });
+
+    it("should accept bid once", function(){
+        var phone_no = "13600000000";
+        var sms_json = build_sms_json("JJ12", phone_no);
+        localStorage.is_bidding = "true";
+        notify_sms_received(sms_json);
+        notify_sms_received(sms_json);
+
+        var activities = JSON.parse(localStorage.activities);
+        expect(activities["1"].biddings["竞价1"].length).toBe(1);
+
+        expect(activities["1"].biddings["竞价1"][0].phone).toBe(phone_no);
+        expect(activities["1"].biddings["竞价1"][0].price).toBe("12");
+    });
 
 
 
