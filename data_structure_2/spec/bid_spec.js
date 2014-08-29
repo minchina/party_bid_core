@@ -17,9 +17,9 @@ describe("Bid", function() {
         localStorage.is_bidding = "";
     });
 
-//    afterEach(function(){
-//        localStorage.clear();
-//    });
+    afterEach(function(){
+        localStorage.clear();
+    });
 
     it("should create new bid", function(){
         create_new_bid("0");

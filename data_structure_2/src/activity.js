@@ -38,14 +38,20 @@ Activity.find_by_id = function (id) {
 };
 
 Activity.prototype.is_signing_up = function (phone) {
-    return !!(_(this.sign_ups).findWhere({phone: phone}));
+    return !!(_(this.sign_ups).find(function (item) {
+        return item.phone == phone;
+    }));
 };
 
 Activity.prototype.is_bidding = function (phone) {
-    return !!(_(this.bids[this.bids.length - 1].biddings).findWhere({phone: phone}));
+    return !!(_(this.biddings[localStorage.current_bid]).findWhere({phone: phone}));
 };
 
+Activity.get_signup_by_id=function(activity_id){
+    var activites = Activity.get_all_activity();
+    return activites[activity_id].sign_ups;
 
+};
 Activity.chose_load_to_bm=function(name,phone){
     if(localStorage.is_signing_up != 'true') {
         return;
@@ -62,7 +68,7 @@ Activity.chose_load_to_jj=function(price,phone){
     if(localStorage.is_bidding != 'true') {
         return;
     }
-    var activity = Activity.find_by_name(localStorage.current_activity);
+    var activity = Activity.find_by_id(localStorage.current_activity_id);
     if(!activity.is_signing_up(phone)) {
         return;
     }

@@ -8,6 +8,4 @@ function notify_sms_received(sms){
     if(type=="jj"){
         Activity.chose_load_to_jj(name,phone);
     }
-
-
 }
