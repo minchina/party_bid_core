@@ -64,13 +64,12 @@ describe("Bids and Bidding Render", function() {
         localStorage.is_bidding = "";
     });
 
-    afterEach(function(){
-        localStorage.clear();
-    })
+//    afterEach(function(){
+//        localStorage.clear();
+//    });
 
     it("should show all bids", function(){
         var bids = render_bids("1");
-
         expect(bids.length).toBe(2);
         expect(bids[0].name).toBe("竞价1");
         expect(bids[1].name).toBe("竞价2");
@@ -78,7 +77,7 @@ describe("Bids and Bidding Render", function() {
 
     it("should show minimum not repeatable bidding", function(){
         var biddings = render_biddings("1","竞价2");
-
+        console.log(biddings[0].name);
         expect(biddings.length).toBe(1);
         expect(biddings[0].name).toBe("于");
         expect(biddings[0].phone).toBe("15600000000");
