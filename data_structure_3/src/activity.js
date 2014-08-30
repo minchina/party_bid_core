@@ -29,6 +29,7 @@ Activity.get_current_activity_id=function(){
 Activity.chose_load_to_bm=function(name,phone){
     if(localStorage.is_signing_up != 'true') {
         Activity_sign_up.get_sign_ups();
+        console.log("dd");
         return;
     }
     if(Activity_sign_up.is_signing_up(phone)){
