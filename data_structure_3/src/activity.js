@@ -40,19 +40,18 @@ Activity.chose_load_to_bm=function(name,phone){
 };
 
 Activity.chose_load_to_jj=function(price,phone){
-
+    Bid.get_all_bids();
     if(localStorage.is_bidding != 'true') {
-
         return;
     }
-    var activity = Activity.find_by_id(localStorage.current_activity_id);
-    if(!activity.is_signing_up(phone)) {
+    if(!Activity_sign_up.is_signing_up(phone)) {
         return;
     }
-    if(activity.is_bidding(phone)) {
-        return;
-    }
-    bid.add_bid_user(price, phone);
+//    if(Bid.is_bidding(phone)) {
+//        return;
+//    }
+    var bid_user = new Bid(phone,price);
+    bid_user.save();
 };
 Activity.find_by_id = function (id) {
     var activity = Activity.get_all_activity()[id];
