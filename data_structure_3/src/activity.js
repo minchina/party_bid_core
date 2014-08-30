@@ -28,20 +28,21 @@ Activity.get_current_activity_id=function(){
 
 Activity.chose_load_to_bm=function(name,phone){
     if(localStorage.is_signing_up != 'true') {
+        Activity_sign_up.get_sign_ups();
         return;
     }
-//    var activity = Activity.find_by_id(localStorage.current_activity_id);
-//    if(activity.is_signing_up(phone)){
-//        return ;
-//    }
-//    activity_sign_up.adduser(name,phone);
+    if(Activity_sign_up.is_signing_up(phone)){
+        return ;
+    }
     var user = new Activity_sign_up(name,phone);
     user.save();
+
 };
 
 Activity.chose_load_to_jj=function(price,phone){
 
     if(localStorage.is_bidding != 'true') {
+
         return;
     }
     var activity = Activity.find_by_id(localStorage.current_activity_id);
