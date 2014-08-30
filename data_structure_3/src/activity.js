@@ -47,9 +47,9 @@ Activity.chose_load_to_jj=function(price,phone){
     if(!Activity_sign_up.is_signing_up(phone)) {
         return;
     }
-//    if(Bid.is_bidding(phone)) {
-//        return;
-//    }
+    if(Bid.is_bidding(phone)) {
+        return;
+    }
     var bid_user = new Bid(phone,price);
     bid_user.save();
 };

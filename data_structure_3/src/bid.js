@@ -14,17 +14,23 @@ function Bid(phone,price){
 }
 
 Bid.prototype.save=function(){
-    console.log("hh");
-//    var bids = Bid.get_all_bids();
-//    var bids_length = bids.length;
-////    bids[bids_length].biddings[bids_length] = this ;
-//    bids.push();
-//    console.log(bids);
-//    console.log(this);
     var activity_id = localStorage.current_activity;
     var bids = JSON.parse(localStorage.bids) || [];
     _(bids).findWhere({name: localStorage.current_bid, activity_id: activity_id}).biddings.push(this);
     localStorage.bids = JSON.stringify(bids);
+};
+
+Bid.is_bidding=function(phone){
+    var current_activity_id = localStorage.current_activity;
+    var current_bid = localStorage.current_bid;
+    var bids = JSON.parse(localStorage.bids) || [];
+    var biddings = _(bids).findWhere({name: current_bid, activity_id: current_activity_id}).biddings;
+    return _(biddings).find(function(bid){return bid.phone==phone});
+
+
+
+
+
 };
 Bid.get_all_bids=function(){
 
